@@ -9,7 +9,7 @@ const BlogPage = ({ data }) => {
         data.allMdx.nodes.map(node => (
           <article key={node.id}>
             <h2>
-              <Link to={`/blog/${node.id}`}>
+              <Link to={`/blog/${node.slug}`}>
                 {node.frontmatter.title}
               </Link>
             </h2>
@@ -20,7 +20,7 @@ const BlogPage = ({ data }) => {
     </Layout>
   )
 }
-// Had trouble getting node.slug working for the link, kept showing as "undefined". Used node.id instead and changed blog pages to {mdx.id}.js
+
 export const query = graphql`
   query {
     allMdx(sort: {fields: frontmatter___date, order: DESC}) {
